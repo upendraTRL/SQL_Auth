@@ -44,6 +44,7 @@ const db = mysql.createConnection({
 app.post("/register", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
+    const usertype = req.body.usertype;
 
     bcrypt.hash(password, saltRounds, (err, hash) => {
         if (err) {
@@ -66,7 +67,7 @@ app.get("/login", (req, res) => {
     } else {
         res.send({ loggedIn: false });
     }
-}); 
+});
 
 app.post("/login", (req, res) => {
     const username = req.body.username;
